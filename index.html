@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Forum</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <h1>Forum</h1>
+    <form id="postForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <label for="postContent">Your Post:</label>
+        <textarea id="postContent" required></textarea>
+        <button type="submit">Post</button>
+    </form>
+    
+    <h2>Recent Posts</h2>
+    <div id="postsContainer">
+        <!-- Posts will be dynamically added here -->
+    </div>
+</body>
+</html>
