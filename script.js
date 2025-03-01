@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load posts from localStorage when the page loads
     function loadPosts() {
         const posts = JSON.parse(localStorage.getItem("forumPosts")) || [];
+        console.log("Loaded posts:", posts); // Added log for debugging
         postsContainer.innerHTML = ""; // Clear container before adding
         posts.forEach(post => addPostToDOM(post.username, post.content));
     }
@@ -20,9 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const posts = JSON.parse(localStorage.getItem("forumPosts")) || [];
             posts.push({ username, content });
+
+            console.log("Saving posts:", posts); // Added log for debugging
             localStorage.setItem("forumPosts", JSON.stringify(posts));
 
             postForm.reset();
+        } else {
+            console.log("Error: Missing username or content.");
         }
     });
 
