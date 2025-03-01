@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const postForm = document.getElementById("postForm");
     const postsContainer = document.getElementById("postsContainer");
-    const clearButton = document.getElementById("clearPosts");
 
     // Load posts from localStorage when the page loads
     function loadPosts() {
@@ -34,12 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
         postDiv.innerHTML = `<strong>${username}</strong>: ${content}`;
         postsContainer.appendChild(postDiv);
     }
-
-    // Clear all posts from localStorage and the page
-    clearButton.addEventListener("click", () => {
-        localStorage.removeItem("forumPosts");
-        postsContainer.innerHTML = "";
-    });
 
     // Load posts when the page loads
     loadPosts();
