@@ -13,7 +13,7 @@
             font-family: Arial, sans-serif;
         }
         h1, h2 {
-            color: #ff4444;
+            color: #d80d0a;
         }
         form {
             background-color: #1e1e1e;
@@ -29,7 +29,7 @@
             margin-bottom: 10px;
         }
         button {
-            background-color: #ff4444;
+            background-color: #d80d0a;
             color: white;
             border: none;
             padding: 10px 15px;
