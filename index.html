@@ -3,69 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Forum</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: Arial, sans-serif;
-        }
-        h1, h2 {
-            color: #ff4444;
-        }
-        form {
-            background-color: #1e1e1e;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        input, textarea {
-            background-color: #2a2a2a;
-            color: #ffffff;
-            border: 1px solid #444;
-            padding: 5px;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        button {
-            background-color: #ff4444;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #cc0000;
-        }
-        #postsContainer {
-            background-color: #1e1e1e;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .post {
-            background-color: #2a2a2a;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Forum</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Forum</h1>
-    <form id="postForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" required>
-        <label for="postContent">Your Post:</label>
-        <textarea id="postContent" required></textarea>
-        <button type="submit">Post</button>
-    </form>
-    
-    <h2>Recent Posts</h2>
-    <div id="postsContainer">
-        <!-- Posts will be dynamically added here -->
+    <div class="container">
+        <h1>Welcome to the Forum</h1>
+        <div id="postForm">
+            <textarea id="postContent" placeholder="Write a post..." rows="4" cols="50"></textarea>
+            <button onclick="submitPost()">Submit Post</button>
+        </div>
+        <hr>
+        <h2>Posts</h2>
+        <div id="postList"></div>
     </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
