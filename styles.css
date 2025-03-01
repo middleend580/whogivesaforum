@@ -1,36 +1,65 @@
 body {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 20px auto;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #C0C0C0;
+    color: black;
+    margin: 20px;
+}
+
+h1, h2 {
     text-align: center;
+    background-color: navy;
+    color: white;
+    padding: 10px;
+    border: 2px solid black;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+    background-color: #808080;
+    padding: 15px;
+    border: 3px solid black;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
 }
 
-textarea {
-    height: 100px;
+input, textarea {
+    width: 80%;
+    margin: 5px 0;
+    background-color: white;
+    border: 2px solid black;
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 button {
+    background-color: #008000;
+    color: white;
+    padding: 5px 15px;
+    border: 2px solid black;
     cursor: pointer;
-    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button:hover {
+    background-color: #006400;
 }
 
 #postsContainer {
-    border-top: 2px solid #ccc;
-    margin-top: 10px;
-    padding-top: 10px;
+    width: 60%;
+    margin: 20px auto;
+    background-color: #D3D3D3;
+    border: 3px solid black;
+    padding: 10px;
 }
 
 .post {
-    background: #f9f9f9;
+    background-color: white;
     padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    text-align: left;
+    border-bottom: 2px dashed black;
+    font-family: 'Courier New', Courier, monospace;
 }
+
+.post:last-child {
+    border-bottom: none;
+}
+
