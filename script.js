@@ -1,32 +1,46 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const postForm = document.getElementById("postForm");
     const postsContainer = document.getElementById("postsContainer");
+    const clearButton = document.getElementById("clearPosts");
 
-    postForm.addEventListener("submit", function (event) {
-        event.preventDefault(); 
+    // Load posts from localStorage when the page loads
+    function loadPosts() {
+        const posts = JSON.parse(localStorage.getItem("forumPosts")) || [];
+        postsContainer.innerHTML = ""; // Clear container before adding
+        posts.forEach(post => addPostToDOM(post.username, post.content));
+    }
 
+    // Add post to localStorage and display it
+    postForm.addEventListener("submit", (e) => {
+        e.preventDefault();
         const username = document.getElementById("username").value.trim();
-        const postContent = document.getElementById("postContent").value.trim();
+        const content = document.getElementById("postContent").value.trim();
 
-        if (username && postContent) {
-            const postElement = document.createElement("div");
-            postElement.classList.add("post");
+        if (username && content) {
+            addPostToDOM(username, content);
 
-            postElement.innerHTML = `
-                <h3>${username}</h3>
-                <p>${postContent}</p>
-                <button class="deleteBtn">Delete</button>
-            `;
+            const posts = JSON.parse(localStorage.getItem("forumPosts")) || [];
+            posts.push({ username, content });
+            localStorage.setItem("forumPosts", JSON.stringify(posts));
 
-            postsContainer.prepend(postElement);
-
-            document.getElementById("username").value = "";
-            document.getElementById("postContent").value = "";
-
-            // Add event listener for delete button
-            postElement.querySelector(".deleteBtn").addEventListener("click", function () {
-                postElement.remove();
-            });
+            postForm.reset();
         }
     });
+
+    // Function to add a post to the page
+    function addPostToDOM(username, content) {
+        const postDiv = document.createElement("div");
+        postDiv.classList.add("post");
+        postDiv.innerHTML = `<strong>${username}</strong>: ${content}`;
+        postsContainer.appendChild(postDiv);
+    }
+
+    // Clear all posts from localStorage and the page
+    clearButton.addEventListener("click", () => {
+        localStorage.removeItem("forumPosts");
+        postsContainer.innerHTML = "";
+    });
+
+    // Load posts when the page loads
+    loadPosts();
 });
