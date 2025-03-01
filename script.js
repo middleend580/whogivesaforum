@@ -4,10 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Load posts from localStorage when the page loads
     function loadPosts() {
+        const username = localStorage.getItem("forumUsername"); // Get the username from localStorage
+        if (!username) {
+            alert("Please enter your username to participate in the forum.");
+            return;
+        }
+
         const posts = JSON.parse(localStorage.getItem("forumPosts")) || [];
-        console.log("Loaded posts:", posts); // Added log for debugging
         postsContainer.innerHTML = ""; // Clear container before adding
-        posts.forEach(post => addPostToDOM(post.username, post.content));
+        posts.forEach(post => {
+            if (post.username === username) {  // Show only posts from the current user
+                addPostToDOM(post.username, post.content);
+            }
+        });
     }
 
     // Add post to localStorage and display it
@@ -17,17 +26,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const content = document.getElementById("postContent").value.trim();
 
         if (username && content) {
-            addPostToDOM(username, content);
-
+            // Store the username in localStorage
+            localStorage.setItem("forumUsername", username);
+            
+            // Save the post
             const posts = JSON.parse(localStorage.getItem("forumPosts")) || [];
             posts.push({ username, content });
-
-            console.log("Saving posts:", posts); // Added log for debugging
             localStorage.setItem("forumPosts", JSON.stringify(posts));
 
+            // Add to the DOM
+            addPostToDOM(username, content);
             postForm.reset();
         } else {
-            console.log("Error: Missing username or content.");
+            alert("Please provide a username and post content.");
         }
     });
 
